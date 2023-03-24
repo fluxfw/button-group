@@ -1,0 +1,58 @@
+:host {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    height: 30px;
+    max-width: 100%;
+    width: 100%;
+}
+
+div {
+    flex-grow: 1;
+    flex-shrink: 1;
+    height: 100%;
+    width: 0;
+}
+
+input {
+    display: none;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+    background-color: var(--flux-button-group-button-background-color);
+    border: none;
+    border-radius: 0px;
+    color: var(--flux-button-group-button-foreground-color);
+    font-size: 16px;
+    height:  100%;
+    padding: 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+
+input:not(:checked) + button:not(:disabled),
+input[type="checkbox"] + button:not(:disabled),
+button[data-button]:not(:disabled) {
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.6;
+}
+
+input:checked + button {
+    background-color: var(--flux-button-group-selected-button-background-color);
+    color: var(--flux-button-group-selected-button-foreground-color);
+}
+
+input:not([type="checkbox"]):not(:checked) + button:not(:disabled):hover,
+input:not([type="checkbox"]):not(:checked) + button:not(:disabled):active,
+button[data-button]:not(:disabled):hover,
+button[data-button]:not(:disabled):active {
+    background-color: var(--flux-button-group-active-button-background-color);
+    color: var(--flux-button-group-active-button-foreground-color);
+}
