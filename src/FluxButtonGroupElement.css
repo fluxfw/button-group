@@ -4,6 +4,8 @@
     flex-wrap: nowrap;
     height: 30px;
     max-width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
     width: 100%;
 }
 
@@ -24,8 +26,10 @@ button {
     border: none;
     border-radius: 0px;
     color: var(--flux-button-group-button-foreground-color);
+    cursor: default;
     font-size: 16px;
-    height:  100%;
+    height: 100%;
+    outline: none;
     padding: 0;
     overflow: hidden;
     text-align: center;
@@ -38,6 +42,11 @@ input:not(:checked) + button:not(:disabled),
 input[type="checkbox"] + button:not(:disabled),
 button[data-button]:not(:disabled) {
     cursor: pointer;
+}
+
+button:not(:disabled):focus-visible {
+    outline: 2px solid var(--flux-button-group-button-focus-outline-color);
+    outline-offset: -2px;
 }
 
 button:disabled {
