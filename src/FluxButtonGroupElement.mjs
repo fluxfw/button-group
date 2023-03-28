@@ -83,11 +83,14 @@ export class FluxButtonGroupElement extends HTMLElement {
             const button_element = document.createElement("button");
             button_element.disabled = button.disabled ?? false;
             button_element.innerText = button.label;
-            button_element.title = button.title ?? "";
+            const title = button.title ?? "";
+            if (title !== "") {
+                button_element.title = title;
+            }
             button_element.type = "button";
-            button_element.value = button.value ?? button.label;
+            button_element.value = button.value;
             if (type === button_element.type) {
-                button_element.dataset.button = true;
+                button_element.dataset.button_only = true;
             }
 
             let input_element;

@@ -30,8 +30,8 @@ button {
     font-size: 16px;
     height: 100%;
     outline: none;
-    padding: 0;
     overflow: hidden;
+    padding: 0;
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -40,7 +40,7 @@ button {
 
 input:not(:checked) + button:not(:disabled),
 input[type="checkbox"] + button:not(:disabled),
-button[data-button]:not(:disabled) {
+button[data-button_only]:not(:disabled) {
     cursor: pointer;
 }
 
@@ -60,8 +60,8 @@ input:checked + button {
 
 input:not([type="checkbox"]):not(:checked) + button:not(:disabled):hover,
 input:not([type="checkbox"]):not(:checked) + button:not(:disabled):active,
-button[data-button]:not(:disabled):hover,
-button[data-button]:not(:disabled):active {
+button[data-button_only]:not(:disabled):hover,
+button[data-button_only]:not(:disabled):active {
     background-color: var(--flux-button-group-active-button-background-color);
     color: var(--flux-button-group-active-button-foreground-color);
 }
