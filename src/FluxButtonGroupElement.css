@@ -24,7 +24,7 @@ button {
     -webkit-tap-highlight-color: transparent;
     background-color: var(--flux-button-group-button-background-color);
     border: none;
-    border-radius: 0px;
+    border-radius: 0;
     color: var(--flux-button-group-button-foreground-color);
     cursor: default;
     font-size: 16px;
