@@ -56,7 +56,7 @@ export class FluxButtonGroupElement extends HTMLElement {
      * @returns {Button[]}
      */
     get buttons() {
-        return Array.from(this.#shadow.querySelectorAll("button")).map(button_element => ({
+        return this.#button_elements.map(button_element => ({
             disabled: button_element.disabled,
             label: button_element.innerText,
             selected: button_element.previousElementSibling?.checked ?? false,
@@ -71,7 +71,7 @@ export class FluxButtonGroupElement extends HTMLElement {
      * @returns {void}
      */
     set buttons(buttons) {
-        Array.from(this.#shadow.querySelectorAll("button")).forEach(button_element => {
+        this.#button_elements.forEach(button_element => {
             button_element.parentElement.remove();
         });
 
@@ -174,7 +174,7 @@ export class FluxButtonGroupElement extends HTMLElement {
      * @returns {Value[]}
      */
     get values() {
-        return Array.from(this.#shadow.querySelectorAll("button")).map(button_element => ({
+        return this.#button_elements.map(button_element => ({
             disabled: button_element.disabled,
             selected: button_element.previousElementSibling?.checked ?? false,
             value: button_element.value
@@ -186,7 +186,7 @@ export class FluxButtonGroupElement extends HTMLElement {
      * @returns {void}
      */
     set values(values) {
-        for (const button_element of this.#shadow.querySelectorAll("button")) {
+        for (const button_element of this.#button_elements) {
             const value = values.find(_value => _value.value === button_element.value) ?? null;
             button_element.disabled = value?.disabled ?? false;
             if (button_element.previousElementSibling !== null) {
@@ -194,6 +194,13 @@ export class FluxButtonGroupElement extends HTMLElement {
                 button_element.previousElementSibling.disabled = button_element.disabled;
             }
         }
+    }
+
+    /**
+     * @returns {HTMLButtonElement[]}
+     */
+    get #button_elements() {
+        return Array.from(this.#shadow.querySelectorAll("button"));
     }
 }
 
