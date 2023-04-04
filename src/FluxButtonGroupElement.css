@@ -58,8 +58,8 @@ input:checked + button {
     color: var(--flux-button-group-selected-button-foreground-color);
 }
 
-input:not([type="checkbox"]):not(:checked) + button:not(:disabled):where(:hover, :active),
-button[data-button_only]:not(:disabled):where(:hover, :active) {
+input:not([type="checkbox"]):not(:checked) + button:not(:disabled):is(:hover, :active),
+button[data-button_only]:not(:disabled):is(:hover, :active) {
     background-color: var(--flux-button-group-active-button-background-color);
     color: var(--flux-button-group-active-button-foreground-color);
 }
