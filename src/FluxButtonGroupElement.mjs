@@ -1,4 +1,6 @@
+import { FLUX_BUTTON_GROUP_EVENT_INPUT } from "./FLUX_BUTTON_GROUP_EVENT.mjs";
 import { flux_css_api } from "../../flux-css-api/src/FluxCssApi.mjs";
+import { BUTTON_TYPE_BUTTON, BUTTON_TYPE_RADIO } from "./BUTTON_TYPE.mjs";
 
 /** @typedef {import("./Button.mjs").Button} Button */
 /** @typedef {import("./Value.mjs").Value} Value */
@@ -14,8 +16,6 @@ flux_css_api.adopt(
 const css = await flux_css_api.import(
     `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElement.css`
 );
-
-export const FLUX_BUTTON_GROUP_INPUT_EVENT = "flux-button-group-input";
 
 export class FluxButtonGroupElement extends HTMLElement {
     /**
@@ -76,7 +76,7 @@ export class FluxButtonGroupElement extends HTMLElement {
         });
 
         for (const button of buttons) {
-            const type = button.type ?? "radio";
+            const type = button.type ?? BUTTON_TYPE_RADIO;
 
             const container_element = document.createElement("div");
 
@@ -87,7 +87,7 @@ export class FluxButtonGroupElement extends HTMLElement {
             if (title !== "") {
                 button_element.title = title;
             }
-            button_element.type = "button";
+            button_element.type = BUTTON_TYPE_BUTTON;
             button_element.value = button.value;
             if (type === button_element.type) {
                 button_element.dataset.button_only = true;
@@ -98,7 +98,7 @@ export class FluxButtonGroupElement extends HTMLElement {
                 input_element = document.createElement("input");
                 input_element.checked = button.selected ?? false;
                 input_element.disabled = button_element.disabled;
-                if (type === "radio") {
+                if (type === BUTTON_TYPE_RADIO) {
                     input_element.name = type;
                 }
                 input_element.type = type;
@@ -106,7 +106,7 @@ export class FluxButtonGroupElement extends HTMLElement {
                 container_element.appendChild(input_element);
 
                 input_element.addEventListener("input", () => {
-                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_INPUT_EVENT, {
+                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_EVENT_INPUT, {
                         detail: {
                             selected: input_element.checked,
                             value: input_element.value
@@ -119,7 +119,7 @@ export class FluxButtonGroupElement extends HTMLElement {
 
             button_element.addEventListener("click", () => {
                 if (type === button_element.type) {
-                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_INPUT_EVENT, {
+                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_EVENT_INPUT, {
                         detail: {
                             selected: false,
                             value: button_element.value
