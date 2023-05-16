@@ -1,4 +1,5 @@
 :host {
+    background-color: var(--flux-button-group-background-color);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
