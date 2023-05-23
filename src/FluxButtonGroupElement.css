@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    height: 30px;
+    height: auto;
     max-width: 100%;
     overflow-x: auto;
     overflow-y: visible;
@@ -23,16 +23,19 @@ input {
 
 button {
     -webkit-tap-highlight-color: transparent;
-    background-color: var(--flux-button-group-button-background-color);
-    border: none;
+    background-color: var(--flux-button-group-background-color);
+    border-bottom: var(--flux-button-group-bottom-border-width) var(--flux-button-group-bottom-border-style) var(--flux-button-group-bottom-border-color);
+    border-left: var(--flux-button-group-left-border-width) var(--flux-button-group-left-border-style) var(--flux-button-group-left-border-color);
     border-radius: 0;
-    color: var(--flux-button-group-button-foreground-color);
+    border-right: var(--flux-button-group-right-border-width) var(--flux-button-group-right-border-style) var(--flux-button-group-right-border-color);
+    border-top: var(--flux-button-group-top-border-width) var(--flux-button-group-top-border-style) var(--flux-button-group-top-border-color);
+    color: var(--flux-button-group-foreground-color);
     cursor: default;
-    font-size: 16px;
+    font-size: var(--flux-button-group-font-size);
     height: 100%;
     outline: none;
     overflow: hidden;
-    padding: 0;
+    padding: var(--flux-button-group-padding);
     text-align: center;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -46,7 +49,7 @@ button[data-button_only]:not(:disabled) {
 }
 
 button:not(:disabled):focus-visible {
-    outline: 2px solid var(--flux-button-group-button-focus-outline-color);
+    outline: 2px solid var(--flux-button-group-focus-outline-color);
     outline-offset: -2px;
 }
 
@@ -55,12 +58,24 @@ button:disabled {
 }
 
 input:checked + button {
-    background-color: var(--flux-button-group-selected-button-background-color);
-    color: var(--flux-button-group-selected-button-foreground-color);
+    background-color: var(--flux-button-group-selected-background-color);
+    border-bottom: var(--flux-button-group-selected-bottom-border-width) var(--flux-button-group-selected-bottom-border-style) var(--flux-button-group-selected-bottom-border-color);
+    border-left: var(--flux-button-group-selected-left-border-width) var(--flux-button-group-selected-left-border-style) var(--flux-button-group-selected-left-border-color);
+    border-right: var(--flux-button-group-selected-right-border-width) var(--flux-button-group-selected-right-border-style) var(--flux-button-group-selected-right-border-color);
+    border-top: var(--flux-button-group-selected-top-border-width) var(--flux-button-group-selected-top-border-style) var(--flux-button-group-selected-top-border-color);
+    color: var(--flux-button-group-selected-foreground-color);
+    font-size: var(--flux-button-group-selected-font-size);
+    padding: var(--flux-button-group-selected-padding);
 }
 
 input:not([type="checkbox"]):not(:checked) + button:not(:disabled):is(:hover, :active),
 button[data-button_only]:not(:disabled):is(:hover, :active) {
-    background-color: var(--flux-button-group-active-button-background-color);
-    color: var(--flux-button-group-active-button-foreground-color);
+    background-color: var(--flux-button-group-active-background-color);
+    border-bottom: var(--flux-button-group-active-bottom-border-width) var(--flux-button-group-active-bottom-border-style) var(--flux-button-group-active-bottom-border-color);
+    border-left: var(--flux-button-group-active-left-border-width) var(--flux-button-group-active-left-border-style) var(--flux-button-group-active-left-border-color);
+    border-right: var(--flux-button-group-active-right-border-width) var(--flux-button-group-active-right-border-style) var(--flux-button-group-active-right-border-color);
+    border-top: var(--flux-button-group-active-top-border-width) var(--flux-button-group-active-top-border-style) var(--flux-button-group-active-top-border-color);
+    color: var(--flux-button-group-active-foreground-color);
+    font-size: var(--flux-button-group-active-font-size);
+    padding: var(--flux-button-group-active-padding);
 }
