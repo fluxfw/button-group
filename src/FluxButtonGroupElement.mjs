@@ -5,13 +5,11 @@ import { BUTTON_TYPE_BUTTON, BUTTON_TYPE_RADIO } from "./BUTTON_TYPE.mjs";
 /** @typedef {import("./Button.mjs").Button} Button */
 /** @typedef {import("./Value.mjs").Value} Value */
 
-flux_css_api.adopt(
-    document,
-    await flux_css_api.import(
-        `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElementVariables.css`
-    ),
-    true
+const variables_css = await flux_css_api.import(
+    `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElementVariables.css`
 );
+
+document.adoptedStyleSheets.unshift(variables_css);
 
 const css = await flux_css_api.import(
     `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElement.css`
@@ -44,10 +42,7 @@ export class FluxButtonGroupElement extends HTMLElement {
             mode: "closed"
         });
 
-        flux_css_api.adopt(
-            this.#shadow,
-            css
-        );
+        this.#shadow.adoptedStyleSheets.push(css);
 
         this.buttons = buttons;
     }
