@@ -23,12 +23,12 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
     #flux_button_group_element;
 
     /**
-     * @param {Button[]} buttons
+     * @param {Button[] | null} buttons
      * @returns {FluxButtonOnlyButtonGroupElement}
      */
-    static new(buttons) {
+    static new(buttons = null) {
         return new this(
-            buttons
+            buttons ?? []
         );
     }
 
@@ -45,13 +45,7 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
 
         shadow.adoptedStyleSheets.push(css);
 
-        this.#flux_button_group_element = FluxButtonGroupElement.new(
-            buttons.map(button => ({
-                ...button,
-                selected: false,
-                type: BUTTON_TYPE_BUTTON
-            }))
-        );
+        this.#flux_button_group_element = FluxButtonGroupElement.new();
         this.#flux_button_group_element.classList.add("buttons");
         this.#flux_button_group_element.addEventListener(FLUX_BUTTON_GROUP_EVENT_INPUT, e => {
             this.dispatchEvent(new CustomEvent(FLUX_BUTTON_ONLY_BUTTON_GROUP_EVENT_CLICK, {
@@ -61,6 +55,26 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
             }));
         });
         shadow.appendChild(this.#flux_button_group_element);
+
+        this.buttons = buttons;
+    }
+
+    /**
+     * @returns {Button[]}
+     */
+    get buttons() {
+        return this.#flux_button_group_element.buttons;
+    }
+
+    /**
+     * @param {Button[]} buttons
+     * @returns {void}
+     */
+    set buttons(buttons) {
+        this.#flux_button_group_element.buttons = buttons.map(button => ({
+            ...button,
+            type: BUTTON_TYPE_BUTTON
+        }));
     }
 
     /**
