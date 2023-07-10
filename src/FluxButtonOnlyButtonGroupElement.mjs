@@ -6,11 +6,11 @@ import { FluxButtonGroupElement } from "./FluxButtonGroupElement.mjs";
 
 /** @typedef {import("./Button.mjs").Button} Button */
 
-const variables_css = await flux_css_api.import(
-    `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonOnlyButtonGroupElementVariables.css`
+const root_css = await flux_css_api.import(
+    `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonOnlyButtonGroupElementRoot.css`
 );
 
-document.adoptedStyleSheets.unshift(variables_css);
+document.adoptedStyleSheets.unshift(root_css);
 
 const css = await flux_css_api.import(
     `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonOnlyButtonGroupElement.css`
@@ -54,7 +54,7 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
                 }
             }));
         });
-        shadow.appendChild(this.#flux_button_group_element);
+        shadow.append(this.#flux_button_group_element);
 
         this.buttons = buttons;
     }

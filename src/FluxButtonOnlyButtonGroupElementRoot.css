@@ -1,10 +1,10 @@
 :root {
-    --flux-button-only-button-group-active-button-background-color: var(--flux-color-scheme-foreground, #000000);
+    --flux-button-only-button-group-active-button-background-color: var(--flux-color-scheme-foreground-color, #000000);
     --flux-button-only-button-group-active-button-bottom-border-color: var(--flux-button-only-button-group-active-button-background-color);
     --flux-button-only-button-group-active-button-bottom-border-style: var(--flux-button-only-button-group-button-bottom-border-style);
     --flux-button-only-button-group-active-button-bottom-border-width: var(--flux-button-only-button-group-button-bottom-border-width);
     --flux-button-only-button-group-active-button-font-size: var(--flux-button-only-button-group-button-font-size);
-    --flux-button-only-button-group-active-button-foreground-color: var(--flux-color-scheme-background, #ffffff);
+    --flux-button-only-button-group-active-button-foreground-color: var(--flux-color-scheme-background-color, #ffffff);
     --flux-button-only-button-group-active-button-left-border-color: var(--flux-button-only-button-group-active-button-background-color);
     --flux-button-only-button-group-active-button-left-border-style: var(--flux-button-only-button-group-button-left-border-style);
     --flux-button-only-button-group-active-button-left-border-width: var(--flux-button-only-button-group-button-left-border-width);
@@ -16,13 +16,13 @@
     --flux-button-only-button-group-active-button-top-border-color: var(--flux-button-only-button-group-active-button-background-color);
     --flux-button-only-button-group-active-button-top-border-style: var(--flux-button-only-button-group-button-bottom-border-style);
     --flux-button-only-button-group-active-button-top-border-width: var(--flux-button-only-button-group-button-bottom-border-width);
-    --flux-button-only-button-group-background-color: var(--flux-color-scheme-background, #ffffff);
-    --flux-button-only-button-group-button-background-color: var(--flux-color-scheme-accent, #000000);
+    --flux-button-only-button-group-background-color: var(--flux-color-scheme-background-color, #ffffff);
+    --flux-button-only-button-group-button-background-color: var(--flux-color-scheme-accent-color, #000000);
     --flux-button-only-button-group-button-bottom-border-color: var(--flux-button-only-button-group-button-background-color);
     --flux-button-only-button-group-button-bottom-border-style: solid;
     --flux-button-only-button-group-button-bottom-border-width: 0;
     --flux-button-only-button-group-button-font-size: 16px;
-    --flux-button-only-button-group-button-foreground-color: var(--flux-color-scheme-accent-foreground, #ffffff);
+    --flux-button-only-button-group-button-foreground-color: var(--flux-color-scheme-accent-color-foreground-color, #ffffff);
     --flux-button-only-button-group-button-height: 100%;
     --flux-button-only-button-group-button-left-border-color: var(--flux-button-only-button-group-button-background-color);
     --flux-button-only-button-group-button-left-border-style: solid;
@@ -38,6 +38,6 @@
     --flux-button-only-button-group-button-width: auto;
     --flux-button-only-button-group-button-width-grow: 0;
     --flux-button-only-button-group-button-width-shrink: 0;
-    --flux-button-only-button-group-focus-button-outline-color: var(--flux-color-scheme-foreground, #000000);
+    --flux-button-only-button-group-focus-button-outline-color: var(--flux-color-scheme-foreground-color, #000000);
     --flux-button-only-button-group-gap: 10px;
 }

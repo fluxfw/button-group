@@ -5,11 +5,11 @@ import { BUTTON_TYPE_BUTTON, BUTTON_TYPE_RADIO } from "./BUTTON_TYPE.mjs";
 /** @typedef {import("./Button.mjs").Button} Button */
 /** @typedef {import("./Value.mjs").Value} Value */
 
-const variables_css = await flux_css_api.import(
-    `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElementVariables.css`
+const root_css = await flux_css_api.import(
+    `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElementRoot.css`
 );
 
-document.adoptedStyleSheets.unshift(variables_css);
+document.adoptedStyleSheets.unshift(root_css);
 
 const css = await flux_css_api.import(
     `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElement.css`
@@ -97,7 +97,7 @@ export class FluxButtonGroupElement extends HTMLElement {
                 }
                 input_element.type = type;
                 input_element.value = button_element.value;
-                container_element.appendChild(input_element);
+                container_element.append(input_element);
 
                 input_element.addEventListener("input", () => {
                     this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_EVENT_INPUT, {
@@ -109,7 +109,7 @@ export class FluxButtonGroupElement extends HTMLElement {
                 });
             }
 
-            container_element.appendChild(button_element);
+            container_element.append(button_element);
 
             button_element.addEventListener("click", () => {
                 if (type === button_element.type) {
@@ -124,7 +124,7 @@ export class FluxButtonGroupElement extends HTMLElement {
                 }
             });
 
-            this.#shadow.appendChild(container_element);
+            this.#shadow.append(container_element);
         }
     }
 
