@@ -1,19 +1,21 @@
-import { FLUX_BUTTON_GROUP_EVENT_INPUT } from "./FLUX_BUTTON_GROUP_EVENT.mjs";
-import { flux_css_api } from "../../flux-css-api/src/FluxCssApi.mjs";
+import { flux_import_css } from "../../flux-style-sheet-manager/src/FluxImportCss.mjs";
 import { BUTTON_TYPE_BUTTON, BUTTON_TYPE_RADIO } from "./BUTTON_TYPE.mjs";
 
 /** @typedef {import("./Button.mjs").Button} Button */
+/** @typedef {import("./StyleSheetManager/StyleSheetManager.mjs").StyleSheetManager} StyleSheetManager */
 /** @typedef {import("./Value.mjs").Value} Value */
 
-const root_css = await flux_css_api.import(
+const root_css = await flux_import_css.import(
     `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElementRoot.css`
 );
 
-document.adoptedStyleSheets.unshift(root_css);
-
-const css = await flux_css_api.import(
+const css = await flux_import_css.import(
     `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElement.css`
 );
+
+export const FLUX_BUTTON_GROUP_ELEMENT_EVENT_INPUT = "flux-button-group-input";
+
+export const FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX = "--flux-button-group-";
 
 export class FluxButtonGroupElement extends HTMLElement {
     /**
@@ -23,9 +25,47 @@ export class FluxButtonGroupElement extends HTMLElement {
 
     /**
      * @param {Button[] | null} buttons
-     * @returns {FluxButtonGroupElement}
+     * @param {StyleSheetManager | null} style_sheet_manager
+     * @returns {Promise<FluxButtonGroupElement>}
      */
-    static new(buttons = null) {
+    static async new(buttons = null, style_sheet_manager = null) {
+        if (style_sheet_manager !== null) {
+            await style_sheet_manager.generateVariableStyleSheet(
+                this.name,
+                {
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-background-color`]: "accent-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-bottom-border-color`]: "accent-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-foreground-color`]: "accent-color-foreground-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-left-border-color`]: "accent-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-right-border-color`]: "accent-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-top-border-color`]: "accent-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}background-color`]: "background-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-bottom-border-color`]: "background-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-foreground-color`]: "foreground-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-left-border-color`]: "background-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-right-border-color`]: "background-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-top-border-color`]: "background-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-button-outline-color`]: "foreground-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-background-color`]: "accent-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-bottom-border-color`]: "accent-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-foreground-color`]: "accent-color-foreground-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-left-border-color`]: "accent-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-right-border-color`]: "accent-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-top-border-color`]: "accent-color"
+                },
+                true
+            );
+
+            await style_sheet_manager.addStyleSheet(
+                root_css,
+                true
+            );
+        } else {
+            if (!document.adoptedStyleSheets.includes(root_css)) {
+                document.adoptedStyleSheets.unshift(root_css);
+            }
+        }
+
         return new this(
             buttons ?? []
         );
@@ -100,7 +140,7 @@ export class FluxButtonGroupElement extends HTMLElement {
                 container_element.append(input_element);
 
                 input_element.addEventListener("input", () => {
-                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_EVENT_INPUT, {
+                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_ELEMENT_EVENT_INPUT, {
                         detail: {
                             selected: input_element.checked,
                             value: input_element.value
@@ -113,7 +153,7 @@ export class FluxButtonGroupElement extends HTMLElement {
 
             button_element.addEventListener("click", () => {
                 if (type === button_element.type) {
-                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_EVENT_INPUT, {
+                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_ELEMENT_EVENT_INPUT, {
                         detail: {
                             selected: false,
                             value: button_element.value
