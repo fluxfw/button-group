@@ -70,8 +70,8 @@ input:checked + button {
     text-align: var(--flux-button-group-selected-button-text-aligin);
 }
 
-input:not([type="checkbox"]):not(:checked) + button:not(:disabled):is(:hover, :active),
-button[data-button_only]:not(:disabled):is(:hover, :active) {
+input:not([type="checkbox"]):not(:checked) + button:not(:disabled):active,
+button[data-button_only]:not(:disabled):active {
     background-color: var(--flux-button-group-active-button-background-color);
     border-bottom: var(--flux-button-group-active-button-bottom-border-width) var(--flux-button-group-active-button-bottom-border-style) var(--flux-button-group-active-button-bottom-border-color);
     border-left: var(--flux-button-group-active-button-left-border-width) var(--flux-button-group-active-button-left-border-style) var(--flux-button-group-active-button-left-border-color);
@@ -81,4 +81,19 @@ button[data-button_only]:not(:disabled):is(:hover, :active) {
     font-size: var(--flux-button-group-active-button-font-size);
     padding: var(--flux-button-group-active-button-padding);
     text-align: var(--flux-button-group-active-button-text-aligin);
+}
+
+@media (hover: hover) {
+    input:not([type="checkbox"]):not(:checked) + button:not(:disabled):hover,
+    button[data-button_only]:not(:disabled):hover {
+        background-color: var(--flux-button-group-active-button-background-color);
+        border-bottom: var(--flux-button-group-active-button-bottom-border-width) var(--flux-button-group-active-button-bottom-border-style) var(--flux-button-group-active-button-bottom-border-color);
+        border-left: var(--flux-button-group-active-button-left-border-width) var(--flux-button-group-active-button-left-border-style) var(--flux-button-group-active-button-left-border-color);
+        border-right: var(--flux-button-group-active-button-right-border-width) var(--flux-button-group-active-button-right-border-style) var(--flux-button-group-active-button-right-border-color);
+        border-top: var(--flux-button-group-active-button-top-border-width) var(--flux-button-group-active-button-top-border-style) var(--flux-button-group-active-button-top-border-color);
+        color: var(--flux-button-group-active-button-foreground-color);
+        font-size: var(--flux-button-group-active-button-font-size);
+        padding: var(--flux-button-group-active-button-padding);
+        text-align: var(--flux-button-group-active-button-text-aligin);
+    }
 }
