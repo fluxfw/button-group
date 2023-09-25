@@ -63,7 +63,7 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
             mode: "closed"
         });
 
-        await style_sheet_manager.addStyleSheetsToShadow(
+        await style_sheet_manager?.addStyleSheetsToShadow(
             flux_button_only_button_group_element.#shadow
         );
 
