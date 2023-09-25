@@ -30,7 +30,7 @@ export class FluxButtonGroupElement extends HTMLElement {
      */
     static async new(buttons = null, style_sheet_manager = null) {
         if (style_sheet_manager !== null) {
-            await style_sheet_manager.generateVariableStyleSheet(
+            await style_sheet_manager.generateVariablesRootStyleSheet(
                 this.name,
                 {
                     [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-background-color`]: "accent-color",
@@ -56,7 +56,7 @@ export class FluxButtonGroupElement extends HTMLElement {
                 true
             );
 
-            await style_sheet_manager.addStyleSheet(
+            await style_sheet_manager.addRootStyleSheet(
                 root_css,
                 true
             );
@@ -66,25 +66,28 @@ export class FluxButtonGroupElement extends HTMLElement {
             }
         }
 
-        return new this(
-            buttons ?? []
-        );
-    }
+        const flux_button_group_element = new this();
 
-    /**
-     * @param {Button[]} buttons
-     * @private
-     */
-    constructor(buttons) {
-        super();
-
-        this.#shadow = this.attachShadow({
+        flux_button_group_element.#shadow = flux_button_group_element.attachShadow({
             mode: "closed"
         });
 
-        this.#shadow.adoptedStyleSheets.push(css);
+        await style_sheet_manager.addStyleSheetsToShadow(
+            flux_button_group_element.#shadow
+        );
 
-        this.buttons = buttons;
+        flux_button_group_element.#shadow.adoptedStyleSheets.push(css);
+
+        flux_button_group_element.buttons = buttons ?? [];
+
+        return flux_button_group_element;
+    }
+
+    /**
+     * @private
+     */
+    constructor() {
+        super();
     }
 
     /**

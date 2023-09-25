@@ -34,7 +34,7 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
      */
     static async new(buttons = null, style_sheet_manager = null) {
         if (style_sheet_manager !== null) {
-            await style_sheet_manager.generateVariableStyleSheet(
+            await style_sheet_manager.generateVariablesRootStyleSheet(
                 this.name,
                 {
                     [`${FLUX_BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-background-color`]: "foreground-color",
@@ -47,7 +47,7 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
                 true
             );
 
-            await style_sheet_manager.addStyleSheet(
+            await style_sheet_manager.addRootStyleSheet(
                 root_css,
                 true
             );
@@ -59,7 +59,18 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
 
         const flux_button_only_button_group_element = new this();
 
+        flux_button_only_button_group_element.#shadow = flux_button_only_button_group_element.attachShadow({
+            mode: "closed"
+        });
+
+        await style_sheet_manager.addStyleSheetsToShadow(
+            flux_button_only_button_group_element.#shadow
+        );
+
+        flux_button_only_button_group_element.#shadow.adoptedStyleSheets.push(css);
+
         flux_button_only_button_group_element.#flux_button_group_element = await FluxButtonGroupElement.new(
+            null,
             style_sheet_manager
         );
         flux_button_only_button_group_element.#flux_button_group_element.classList.add("buttons");
@@ -82,12 +93,6 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
      */
     constructor() {
         super();
-
-        this.#shadow = this.attachShadow({
-            mode: "closed"
-        });
-
-        this.#shadow.adoptedStyleSheets.push(css);
     }
 
     /**
