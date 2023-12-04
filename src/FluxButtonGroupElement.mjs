@@ -31,7 +31,7 @@ export class FluxButtonGroupElement extends HTMLElement {
     static async new(buttons = null, style_sheet_manager = null) {
         if (style_sheet_manager !== null) {
             await style_sheet_manager.generateVariablesRootStyleSheet(
-                this.name,
+                FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX,
                 {
                     [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-background-color`]: "accent-color",
                     [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-bottom-border-color`]: "accent-color",
