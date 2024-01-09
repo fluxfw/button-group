@@ -32,6 +32,7 @@ button {
     border-top: var(--flux-button-group-button-top-border-width) var(--flux-button-group-button-top-border-style) var(--flux-button-group-button-top-border-color);
     color: var(--flux-button-group-button-foreground-color);
     cursor: default;
+    font-family: unset;
     font-size: var(--flux-button-group-button-font-size);
     height: 100%;
     outline: none;
