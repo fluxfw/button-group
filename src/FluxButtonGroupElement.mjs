@@ -1,17 +1,10 @@
-import { flux_import_css } from "../../flux-style-sheet-manager/src/FluxImportCss.mjs";
+import css from "./FluxButtonGroupElement.css" with { type: "css" };
+import root_css from "./FluxButtonGroupElementRoot.css" with { type: "css" };
 import { BUTTON_TYPE_BUTTON, BUTTON_TYPE_RADIO } from "./BUTTON_TYPE.mjs";
 
 /** @typedef {import("./Button.mjs").Button} Button */
 /** @typedef {import("./StyleSheetManager/StyleSheetManager.mjs").StyleSheetManager} StyleSheetManager */
 /** @typedef {import("./Value.mjs").Value} Value */
-
-const root_css = await flux_import_css.import(
-    `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElementRoot.css`
-);
-
-const css = await flux_import_css.import(
-    `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonGroupElement.css`
-);
 
 export const FLUX_BUTTON_GROUP_ELEMENT_EVENT_INPUT = "flux-button-group-input";
 

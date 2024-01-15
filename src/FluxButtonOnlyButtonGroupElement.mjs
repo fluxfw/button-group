@@ -1,17 +1,10 @@
 import { BUTTON_TYPE_BUTTON } from "./BUTTON_TYPE.mjs";
-import { flux_import_css } from "../../flux-style-sheet-manager/src/FluxImportCss.mjs";
+import css from "./FluxButtonOnlyButtonGroupElement.css" with { type: "css" };
+import root_css from "./FluxButtonOnlyButtonGroupElementRoot.css" with { type: "css" };
 import { FLUX_BUTTON_GROUP_ELEMENT_EVENT_INPUT, FluxButtonGroupElement } from "./FluxButtonGroupElement.mjs";
 
 /** @typedef {import("./Button.mjs").Button} Button */
 /** @typedef {import("./StyleSheetManager/StyleSheetManager.mjs").StyleSheetManager} StyleSheetManager */
-
-const root_css = await flux_import_css.import(
-    `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonOnlyButtonGroupElementRoot.css`
-);
-
-const css = await flux_import_css.import(
-    `${import.meta.url.substring(0, import.meta.url.lastIndexOf("/"))}/FluxButtonOnlyButtonGroupElement.css`
-);
 
 export const FLUX_BUTTON_ONLY_BUTTON_GROUP_ELEMENT_EVENT_CLICK = "flux-button-only-button-group-click";
 
