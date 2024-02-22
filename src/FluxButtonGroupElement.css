@@ -11,6 +11,11 @@
     width: 100%;
 }
 
+:host(:focus-visible) {
+    outline: 2px solid var(--flux-button-group-focus-outline-color);
+    outline-offset: -2px;
+}
+
 div {
     flex-grow: var(--flux-button-group-button-width-grow);
     flex-shrink: var(--flux-button-group-button-width-shrink);

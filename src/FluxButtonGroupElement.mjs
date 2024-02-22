@@ -39,6 +39,7 @@ export class FluxButtonGroupElement extends HTMLElement {
                     [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-right-border-color`]: "background-color",
                     [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-top-border-color`]: "background-color",
                     [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-button-outline-color`]: "foreground-color",
+                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-outline-color`]: "foreground-color",
                     [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-background-color`]: "accent-color",
                     [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-bottom-border-color`]: "accent-color",
                     [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-foreground-color`]: "accent-color-foreground-color",

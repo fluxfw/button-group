@@ -39,6 +39,7 @@
     --flux-button-group-button-width-grow: 1;
     --flux-button-group-button-width-shrink: 1;
     --flux-button-group-focus-button-outline-color: #000000;
+    --flux-button-group-focus-outline-color: #000000;
     --flux-button-group-gap: 0;
     --flux-button-group-selected-button-background-color: #000000;
     --flux-button-group-selected-button-bottom-border-color: #000000;

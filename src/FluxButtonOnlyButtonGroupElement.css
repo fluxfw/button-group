@@ -46,6 +46,7 @@
     --flux-button-group-button-width-grow: var(--flux-button-only-button-group-button-width-grow);
     --flux-button-group-button-width-shrink: var(--flux-button-only-button-group-button-width-shrink);
     --flux-button-group-focus-button-outline-color: var(--flux-button-only-button-group-focus-button-outline-color);
+    --flux-button-group-focus-outline-color: var(--flux-button-only-button-group-focus-outline-color);
     --flux-button-group-gap: var(--flux-button-only-button-group-gap);
     --flux-button-group-selected-button-background-color: var(--flux-button-only-button-group-active-button-background-color);
     --flux-button-group-selected-button-bottom-border-color: var(--flux-button-only-button-group-active-button-bottom-border-color);

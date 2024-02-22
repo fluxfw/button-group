@@ -35,7 +35,8 @@ export class FluxButtonOnlyButtonGroupElement extends HTMLElement {
                     [`${FLUX_BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}background-color`]: "background-color",
                     [`${FLUX_BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-background-color`]: "accent-color",
                     [`${FLUX_BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-foreground-color`]: "accent-color-foreground-color",
-                    [`${FLUX_BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-button-outline-color`]: "foreground-color"
+                    [`${FLUX_BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-button-outline-color`]: "foreground-color",
+                    [`${FLUX_BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-outline-color`]: "foreground-color"
                 },
                 true
             );

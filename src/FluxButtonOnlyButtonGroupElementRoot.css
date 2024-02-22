@@ -39,5 +39,6 @@
     --flux-button-only-button-group-button-width-grow: 0;
     --flux-button-only-button-group-button-width-shrink: 0;
     --flux-button-only-button-group-focus-button-outline-color: #000000;
+    --flux-button-only-button-group-focus-outline-color: #000000;
     --flux-button-only-button-group-gap: 10px;
 }
