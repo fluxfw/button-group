@@ -1,16 +1,16 @@
-import css from "./FluxButtonGroupElement.css" with { type: "css" };
-import root_css from "./FluxButtonGroupElementRoot.css" with { type: "css" };
+import css from "./ButtonGroupElement.css" with { type: "css" };
+import root_css from "./ButtonGroupElementRoot.css" with { type: "css" };
 import { BUTTON_TYPE_BUTTON, BUTTON_TYPE_RADIO } from "./BUTTON_TYPE.mjs";
 
 /** @typedef {import("./Button.mjs").Button} Button */
 /** @typedef {import("./StyleSheetManager/StyleSheetManager.mjs").StyleSheetManager} StyleSheetManager */
 /** @typedef {import("./Value.mjs").Value} Value */
 
-export const FLUX_BUTTON_GROUP_ELEMENT_EVENT_INPUT = "flux-button-group-input";
+export const BUTTON_GROUP_ELEMENT_EVENT_INPUT = "button-group-input";
 
-export const FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX = "--flux-button-group-";
+export const BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX = "--button-group-";
 
-export class FluxButtonGroupElement extends HTMLElement {
+export class ButtonGroupElement extends HTMLElement {
     /**
      * @type {ShadowRoot}
      */
@@ -19,33 +19,33 @@ export class FluxButtonGroupElement extends HTMLElement {
     /**
      * @param {Button[] | null} buttons
      * @param {StyleSheetManager | null} style_sheet_manager
-     * @returns {Promise<FluxButtonGroupElement>}
+     * @returns {Promise<ButtonGroupElement>}
      */
     static async new(buttons = null, style_sheet_manager = null) {
         if (style_sheet_manager !== null) {
             await style_sheet_manager.generateVariablesRootStyleSheet(
-                FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX,
+                BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX,
                 {
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-background-color`]: "accent-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-bottom-border-color`]: "accent-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-foreground-color`]: "accent-color-foreground-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-left-border-color`]: "accent-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-right-border-color`]: "accent-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-top-border-color`]: "accent-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}background-color`]: "background-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-bottom-border-color`]: "background-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-foreground-color`]: "foreground-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-left-border-color`]: "background-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-right-border-color`]: "background-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-top-border-color`]: "background-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-button-outline-color`]: "foreground-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-outline-color`]: "foreground-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-background-color`]: "accent-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-bottom-border-color`]: "accent-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-foreground-color`]: "accent-color-foreground-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-left-border-color`]: "accent-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-right-border-color`]: "accent-color",
-                    [`${FLUX_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-top-border-color`]: "accent-color"
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-background-color`]: "accent-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-bottom-border-color`]: "accent-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-foreground-color`]: "accent-foreground-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-left-border-color`]: "accent-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-right-border-color`]: "accent-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}active-button-top-border-color`]: "accent-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}background-color`]: "background-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-bottom-border-color`]: "background-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-foreground-color`]: "foreground-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-left-border-color`]: "background-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-right-border-color`]: "background-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-top-border-color`]: "background-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-button-outline-color`]: "foreground-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-outline-color`]: "foreground-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-background-color`]: "accent-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-bottom-border-color`]: "accent-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-foreground-color`]: "accent-foreground-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-left-border-color`]: "accent-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-right-border-color`]: "accent-color",
+                    [`${BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}selected-button-top-border-color`]: "accent-color"
                 },
                 true
             );
@@ -60,21 +60,21 @@ export class FluxButtonGroupElement extends HTMLElement {
             }
         }
 
-        const flux_button_group_element = new this();
+        const button_group_element = new this();
 
-        flux_button_group_element.#shadow = flux_button_group_element.attachShadow({
+        button_group_element.#shadow = button_group_element.attachShadow({
             mode: "closed"
         });
 
         await style_sheet_manager?.addStyleSheetsToShadow(
-            flux_button_group_element.#shadow
+            button_group_element.#shadow
         );
 
-        flux_button_group_element.#shadow.adoptedStyleSheets.push(css);
+        button_group_element.#shadow.adoptedStyleSheets.push(css);
 
-        flux_button_group_element.buttons = buttons ?? [];
+        button_group_element.buttons = buttons ?? [];
 
-        return flux_button_group_element;
+        return button_group_element;
     }
 
     /**
@@ -137,7 +137,7 @@ export class FluxButtonGroupElement extends HTMLElement {
                 container_element.append(input_element);
 
                 input_element.addEventListener("input", () => {
-                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_ELEMENT_EVENT_INPUT, {
+                    this.dispatchEvent(new CustomEvent(BUTTON_GROUP_ELEMENT_EVENT_INPUT, {
                         detail: {
                             selected: input_element.checked,
                             value: input_element.value
@@ -150,7 +150,7 @@ export class FluxButtonGroupElement extends HTMLElement {
 
             button_element.addEventListener("click", () => {
                 if (type === button_element.type) {
-                    this.dispatchEvent(new CustomEvent(FLUX_BUTTON_GROUP_ELEMENT_EVENT_INPUT, {
+                    this.dispatchEvent(new CustomEvent(BUTTON_GROUP_ELEMENT_EVENT_INPUT, {
                         detail: {
                             selected: false,
                             value: button_element.value
@@ -235,6 +235,6 @@ export class FluxButtonGroupElement extends HTMLElement {
     }
 }
 
-export const FLUX_BUTTON_GROUP_ELEMENT_TAG_NAME = "flux-button-group";
+export const BUTTON_GROUP_ELEMENT_TAG_NAME = "button-group";
 
-customElements.define(FLUX_BUTTON_GROUP_ELEMENT_TAG_NAME, FluxButtonGroupElement);
+customElements.define(BUTTON_GROUP_ELEMENT_TAG_NAME, ButtonGroupElement);

@@ -1,3 +1,1 @@
-# flux-button-group
-
-Button group
+# button-group
