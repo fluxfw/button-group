@@ -4,6 +4,8 @@
     --button-only-button-group-active-button-bottom-border-style: var(--button-only-button-group-button-bottom-border-style);
     --button-only-button-group-active-button-bottom-border-width: var(--button-only-button-group-button-bottom-border-width);
     --button-only-button-group-active-button-font-size: var(--button-only-button-group-button-font-size);
+    --button-only-button-group-active-button-font-style: var(--button-only-button-group-button-font-style);
+    --button-only-button-group-active-button-font-weight: var(--button-only-button-group-button-font-weight);
     --button-only-button-group-active-button-foreground-color: #ffffff;
     --button-only-button-group-active-button-left-border-color: var(--button-only-button-group-active-button-background-color);
     --button-only-button-group-active-button-left-border-style: var(--button-only-button-group-button-left-border-style);
@@ -21,7 +23,9 @@
     --button-only-button-group-button-bottom-border-color: var(--button-only-button-group-button-background-color);
     --button-only-button-group-button-bottom-border-style: solid;
     --button-only-button-group-button-bottom-border-width: 0;
-    --button-only-button-group-button-font-size: 16px;
+    --button-only-button-group-button-font-size: var(--button-only-button-group-font-size);
+    --button-only-button-group-button-font-style: var(--button-only-button-group-font-style);
+    --button-only-button-group-button-font-weight: var(--button-only-button-group-font-weight);
     --button-only-button-group-button-foreground-color: #ffffff;
     --button-only-button-group-button-height: 100%;
     --button-only-button-group-button-left-border-color: var(--button-only-button-group-button-background-color);
@@ -40,5 +44,9 @@
     --button-only-button-group-button-width-shrink: 0;
     --button-only-button-group-focus-button-outline-color: #000000;
     --button-only-button-group-focus-outline-color: #000000;
+    --button-only-button-group-font-size: 16px;
+    --button-only-button-group-font-style: normal;
+    --button-only-button-group-font-weight: normal;
+    --button-only-button-group-foreground-color: #000000;
     --button-only-button-group-gap: 10px;
 }

@@ -1,8 +1,12 @@
 :host {
     background-color: var(--button-group-background-color);
+    color: var(--button-group-foreground-color);
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    font-size: var(--button-group-font-size);
+    font-style: var(--button-group-font-style);
+    font-weight: var(--button-group-font-weight);
     gap: var(--button-group-gap);
     height: auto;
     max-width: 100%;
@@ -39,6 +43,8 @@ button {
     cursor: default;
     font-family: unset;
     font-size: var(--button-group-button-font-size);
+    font-style: var(--button-group-button-font-style);
+    font-weight: var(--button-group-button-font-weight);
     height: 100%;
     outline: none;
     overflow: hidden;
@@ -72,6 +78,8 @@ input:checked + button {
     border-top: var(--button-group-selected-button-top-border-width) var(--button-group-selected-button-top-border-style) var(--button-group-selected-button-top-border-color);
     color: var(--button-group-selected-button-foreground-color);
     font-size: var(--button-group-selected-button-font-size);
+    font-style: var(--button-group-selected-button-font-style);
+    font-weight: var(--button-group-selected-button-font-weight);
     padding: var(--button-group-selected-button-padding);
     text-align: var(--button-group-selected-button-text-aligin);
 }
@@ -85,6 +93,8 @@ button[data-button_only]:not(:disabled):active {
     border-top: var(--button-group-active-button-top-border-width) var(--button-group-active-button-top-border-style) var(--button-group-active-button-top-border-color);
     color: var(--button-group-active-button-foreground-color);
     font-size: var(--button-group-active-button-font-size);
+    font-style: var(--button-group-active-button-font-style);
+    font-weight: var(--button-group-active-button-font-weight);
     padding: var(--button-group-active-button-padding);
     text-align: var(--button-group-active-button-text-aligin);
 }
@@ -99,6 +109,8 @@ button[data-button_only]:not(:disabled):active {
         border-top: var(--button-group-active-button-top-border-width) var(--button-group-active-button-top-border-style) var(--button-group-active-button-top-border-color);
         color: var(--button-group-active-button-foreground-color);
         font-size: var(--button-group-active-button-font-size);
+        font-style: var(--button-group-active-button-font-style);
+        font-weight: var(--button-group-active-button-font-weight);
         padding: var(--button-group-active-button-padding);
         text-align: var(--button-group-active-button-text-aligin);
     }

@@ -36,7 +36,8 @@ export class ButtonOnlyButtonGroupElement extends HTMLElement {
                     [`${BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-background-color`]: "accent-color",
                     [`${BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}button-foreground-color`]: "accent-foreground-color",
                     [`${BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-button-outline-color`]: "foreground-color",
-                    [`${BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-outline-color`]: "foreground-color"
+                    [`${BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}focus-outline-color`]: "foreground-color",
+                    [`${BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX}foreground-color`]: "foreground-color"
                 },
                 true
             );
