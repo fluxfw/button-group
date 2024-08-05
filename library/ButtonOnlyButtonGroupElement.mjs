@@ -52,6 +52,9 @@ export class ButtonOnlyButtonGroupElement extends HTMLElement {
             }
         }
 
+        /**
+         * @type {ButtonOnlyButtonGroupElementWithEvents}
+         */
         const button_only_button_group_element = new this();
 
         button_only_button_group_element.#shadow = button_only_button_group_element.attachShadow({

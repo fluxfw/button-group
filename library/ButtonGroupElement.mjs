@@ -59,6 +59,9 @@ export class ButtonGroupElement extends HTMLElement {
             }
         }
 
+        /**
+         * @type {ButtonGroupElementWithEvents}
+         */
         const button_group_element = new this();
 
         button_group_element.#shadow = button_group_element.attachShadow({
