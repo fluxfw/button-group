@@ -1,18 +1,18 @@
 import { BUTTON_TYPE_BUTTON } from "./BUTTON_TYPE.mjs";
+import { ButtonGroupElement } from "./ButtonGroupElement.mjs";
 import css from "./ButtonOnlyButtonGroupElement.css" with { type: "css" };
 import root_css from "./ButtonOnlyButtonGroupElementRoot.css" with { type: "css" };
-import { BUTTON_GROUP_ELEMENT_EVENT_INPUT, ButtonGroupElement } from "./ButtonGroupElement.mjs";
 
 /** @typedef {import("./Button.mjs").Button} Button */
+/** @typedef {import("./ButtonGroupElementWithEvents.mjs").ButtonGroupElementWithEvents} ButtonGroupElementWithEvents */
+/** @typedef {import("./ButtonOnlyButtonGroupElementWithEvents.mjs").ButtonOnlyButtonGroupElementWithEvents} ButtonOnlyButtonGroupElementWithEvents */
 /** @typedef {import("./StyleSheetManager/StyleSheetManager.mjs").StyleSheetManager} StyleSheetManager */
-
-export const BUTTON_ONLY_BUTTON_GROUP_ELEMENT_EVENT_CLICK = "button-only-button-group-click";
 
 export const BUTTON_ONLY_BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX = "--button-only-button-group-";
 
 export class ButtonOnlyButtonGroupElement extends HTMLElement {
     /**
-     * @type {ButtonGroupElement}
+     * @type {ButtonGroupElementWithEvents}
      */
     #button_group_element;
     /**
@@ -23,7 +23,7 @@ export class ButtonOnlyButtonGroupElement extends HTMLElement {
     /**
      * @param {Button[] | null} buttons
      * @param {StyleSheetManager | null} style_sheet_manager
-     * @returns {Promise<ButtonOnlyButtonGroupElement>}
+     * @returns {Promise<ButtonOnlyButtonGroupElementWithEvents>}
      */
     static async new(buttons = null, style_sheet_manager = null) {
         if (style_sheet_manager !== null) {
@@ -69,11 +69,11 @@ export class ButtonOnlyButtonGroupElement extends HTMLElement {
             style_sheet_manager
         );
         button_only_button_group_element.#button_group_element.classList.add("buttons");
-        button_only_button_group_element.#button_group_element.addEventListener(BUTTON_GROUP_ELEMENT_EVENT_INPUT, e => {
-            button_only_button_group_element.dispatchEvent(new CustomEvent(BUTTON_ONLY_BUTTON_GROUP_ELEMENT_EVENT_CLICK, {
-                detail: {
-                    value: e.detail.value
-                }
+        button_only_button_group_element.#button_group_element.addEventListener("button-input", event => {
+            button_only_button_group_element.dispatchEvent(new CustomEvent("button-click", {
+                detail: Object.freeze({
+                    value: event.detail.value
+                })
             }));
         });
         button_only_button_group_element.#shadow.append(button_only_button_group_element.#button_group_element);

@@ -3,10 +3,9 @@ import root_css from "./ButtonGroupElementRoot.css" with { type: "css" };
 import { BUTTON_TYPE_BUTTON, BUTTON_TYPE_RADIO } from "./BUTTON_TYPE.mjs";
 
 /** @typedef {import("./Button.mjs").Button} Button */
+/** @typedef {import("./ButtonGroupElementWithEvents.mjs").ButtonGroupElementWithEvents} ButtonGroupElementWithEvents */
 /** @typedef {import("./StyleSheetManager/StyleSheetManager.mjs").StyleSheetManager} StyleSheetManager */
 /** @typedef {import("./Value.mjs").Value} Value */
-
-export const BUTTON_GROUP_ELEMENT_EVENT_INPUT = "button-group-input";
 
 export const BUTTON_GROUP_ELEMENT_VARIABLE_PREFIX = "--button-group-";
 
@@ -19,7 +18,7 @@ export class ButtonGroupElement extends HTMLElement {
     /**
      * @param {Button[] | null} buttons
      * @param {StyleSheetManager | null} style_sheet_manager
-     * @returns {Promise<ButtonGroupElement>}
+     * @returns {Promise<ButtonGroupElementWithEvents>}
      */
     static async new(buttons = null, style_sheet_manager = null) {
         if (style_sheet_manager !== null) {
@@ -137,11 +136,11 @@ export class ButtonGroupElement extends HTMLElement {
                 container_element.append(input_element);
 
                 input_element.addEventListener("input", () => {
-                    this.dispatchEvent(new CustomEvent(BUTTON_GROUP_ELEMENT_EVENT_INPUT, {
-                        detail: {
+                    this.dispatchEvent(new CustomEvent("button-input", {
+                        detail: Object.freeze({
                             selected: input_element.checked,
                             value: input_element.value
-                        }
+                        })
                     }));
                 });
             }
@@ -150,11 +149,11 @@ export class ButtonGroupElement extends HTMLElement {
 
             button_element.addEventListener("click", () => {
                 if (type === button_element.type) {
-                    this.dispatchEvent(new CustomEvent(BUTTON_GROUP_ELEMENT_EVENT_INPUT, {
-                        detail: {
+                    this.dispatchEvent(new CustomEvent("button-input", {
+                        detail: Object.freeze({
                             selected: false,
                             value: button_element.value
-                        }
+                        })
                     }));
                 } else {
                     input_element.click();
